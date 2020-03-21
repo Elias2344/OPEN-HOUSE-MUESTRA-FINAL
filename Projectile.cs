@@ -23,5 +23,14 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
     }
     }
+    private void OnCollisionEnter2D(Collision2D other) {
+        Debug.Log(other);
+        Debug.Log(other.gameObject.tag);
+        if (other.gameObject.tag == damagebleTargetTag) {
+            Stats enemyStats = other.gameObject.GetComponent<Stats>();
+
+            enemyStats.OnHit();
+        }
+    }
 }
 
